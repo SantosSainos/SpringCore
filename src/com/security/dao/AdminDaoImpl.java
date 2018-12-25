@@ -99,10 +99,10 @@ public class AdminDaoImpl implements AdminDao{
 	}
 
 	@Override
-	public void saveAll(List<Admin> admins) {
+	public int[] saveAll(List<Admin> admins) {
 		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(admins.toArray());
 		
-		jdbcTemplate.batchUpdate("insert into Admin (nombre, cargo, fechaCreacion) values (:nombre, :cargo, :fechaCreacion)", 
+		return jdbcTemplate.batchUpdate("insert into Admin (nombre, cargo, fechaCreacion) values (:nombre, :cargo, :fechaCreacion)", 
 				batchArgs);
 	}
 

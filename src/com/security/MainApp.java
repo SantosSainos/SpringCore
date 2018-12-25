@@ -1,6 +1,7 @@
 package com.security;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,22 +27,19 @@ public class MainApp {
 
 		Timestamp ts = new Timestamp(new Date().getTime());
 
-		Admin admin = new Admin();
-		admin.setCargo("Gerente");
-		admin.setNombre("Carlos");
-		admin.setFechaCreacion(ts);
+		
 
 		try {
-			adminDao.save(admin);
+			List<Admin> admins = new ArrayList<Admin>();
+			admins.add(new Admin("Maria","Desarrollador", ts));
+			admins.add(new Admin("Carlos","Tester", ts));
+			admins.add(new Admin("Josue","Lider técnico", ts));
 			
-//			List<Admin> admins = adminDao.findAll();
-//			
-//			for (Admin admin2 : admins) {
-//				System.out.println(admin2);
-//			}
+			int[] vals = adminDao.saveAll(admins);
 			
-			System.out.println(adminDao.findById(1));
-			System.out.println(adminDao.findByNombre("j").toString());
+			for (int i : vals) {
+				System.out.println("Filas afectadas para la opereción: " + i);
+			}
 			
 		} catch (CannotGetJdbcConnectionException e) {
 			e.printStackTrace();

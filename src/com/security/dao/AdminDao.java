@@ -24,5 +24,5 @@ public interface AdminDao {
 	
 	public boolean delete(int idAd);
 	
-	public void saveAll(List<Admin> admins);
+	public int[] saveAll(List<Admin> admins);
 }
