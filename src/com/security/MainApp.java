@@ -31,9 +31,9 @@ public class MainApp {
 
 		try {
 			List<Admin> admins = new ArrayList<Admin>();
-			admins.add(new Admin("Maria","Desarrollador", ts));
-			admins.add(new Admin("Carlos","Tester", ts));
-			admins.add(new Admin("Josue","Lider técnico", ts));
+			admins.add(new Admin(51,"Maria","Desarrollador", ts));
+			admins.add(new Admin(50,"Carlos","Tester", ts));
+			admins.add(new Admin(33,"Josue","Lider técnico", ts));
 			
 			int[] vals = adminDao.saveAll(admins);
 			
